@@ -21,7 +21,6 @@ export async function POST(req: NextRequest) {
               ),
           }),
           execute: async ({ type }) => {
-            console.log(type)
             const price = await fetch(
               `https://bo.dolarapi.com/v1/dolares/${type}`,
             )?.then((res) => res.json())
