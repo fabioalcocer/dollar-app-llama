@@ -2,12 +2,14 @@ import GenerateText from '@/components/generate-text'
 import { createClient } from '@libsql/client'
 
 const client = createClient({
+  // url: 'file:local.db',
   url: process.env.NEXT_PUBLIC_TURSO_DB_URL || '',
-  syncUrl: 'https://fabioalcocerapp-fabioalcocer.turso.io',
+  syncUrl: 'https://fabioalcocerapp-branch-001-fabioalcocer.turso.io',
   authToken: process.env.NEXT_PUBLIC_TURSO_AUTH_TOKEN,
 })
 
 export default async function Home() {
+  await client.sync()
   const result = await client.execute('SELECT * FROM products')
 
   console.log('Products:', result.rows)
