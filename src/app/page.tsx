@@ -9,7 +9,6 @@ const client = createClient({
 })
 
 export default async function Home() {
-  await client.sync()
   const result = await client.execute('SELECT * FROM products')
 
   console.log('Products:', result.rows)
