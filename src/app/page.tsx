@@ -1,6 +1,9 @@
 import GenerateText from '@/components/generate-text'
 import { createClient } from '@libsql/client'
 
+export const runtime = 'edge'
+export const revalidate = 0
+
 const client = createClient({
   // url: 'file:local.db',
   url: process.env.NEXT_PUBLIC_TURSO_DB_URL || '',
